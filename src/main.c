@@ -3,7 +3,7 @@
 
 #include <string.h>
 
-int eval(char op, int x, int y) {
+static int eval(char op, int x, int y) {
 	switch(op) {
 		case '+': return x + y;
 		case '-': return x - y;
@@ -13,7 +13,7 @@ int eval(char op, int x, int y) {
 	return 0;
 }
 
-void calc(char *str) {
+int calc(char *str) {
 	int x = 0;
 	char op = '+';
 	for (int i=0;i<strlen(str);i++) {
@@ -27,15 +27,15 @@ void calc(char *str) {
 			x = eval(op, x, str[i] - '0');
 		}
 	}
-	printf("%d\n", x);
+	return x;
 }
 
 int main(void) {
 	while (1) {
-		char *str = malloc(256);
+		char *str = malloc(256 * sizeof(char));
 		printf("> ");
 		fgets(str, 256, stdin);
-		calc(str);
+		printf("%d\n", calc(str));
 		free(str);
 	}
 	return 0;
