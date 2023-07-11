@@ -32,7 +32,7 @@ int calc(char *str) {
 
 int main(void) {
 	while (1) {
-		char *str = malloc(256 * sizeof(char));
+		char *str = malloc(256);
 		printf("> ");
 		fgets(str, 256, stdin);
 		printf("%d\n", calc(str));
